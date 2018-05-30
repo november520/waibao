@@ -30,9 +30,13 @@
 	import headTop from '../components/headTop'
 	import dtime from 'time-formater'
 	import {userCount, orderCount, getUserCount, getOrderCount, adminDayCount, adminCount} from '@/api/getData'
+    import {baseUrl} from '../config/env'
+
     export default {
     	data(){
-
+            return{
+                baseUrl,
+            }
     	},
     	components: {
     		headTop,
@@ -63,13 +67,13 @@
                 console.log(fileList);
             },
             beforeUpload: function (file) {
+                console.log(baseUrl)
                 //这里是重点，将文件转化为formdata数据上传
                 let data = new FormData();
                 // var word = file;
                 data.append('office',file);
                 //data.append('type','source_material')
                 //data.append('org_id_init',"5B6CE3C39135D03D84CAFE223D352D77");
-                console.log(data)
                 var apiPath = "http://111.230.176.108:3333/api/publish"
                 //var apiPath = "http://192.168.11.162:8090/api/v1/due_diligence/upload_file/"
                 this.axios.post(apiPath,data, {
@@ -77,7 +81,12 @@
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(function(res) {
-                        console.log(res);
+                        console.log(res)
+                        let data = eval+"("+res.data+")";
+                        console.log(typeof(data))
+                        if(data.code==1){
+                            console.log(data.data.filename)
+                        }
                 }).then(function (data) {
                     console.log(data)
                 })
