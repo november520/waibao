@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/src/config/fetch.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="31" lean-forward="true" selection-end-line="1" />
+              <caret column="31" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -35,7 +35,7 @@
       <file leaf-file-name="mUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/mUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="1005">
               <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
             </state>
           </provider>
@@ -44,29 +44,29 @@
       <file leaf-file-name="home.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/page/home.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+            <state relative-caret-position="189">
+              <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
               <folding>
-                <element signature="e#938#981#0" expanded="true" />
+                <element signature="e#1125#1168#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/getData.js">
+      <file leaf-file-name="manage.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/page/manage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3215">
-              <caret line="221" column="14" lean-forward="true" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
+            <state relative-caret-position="285">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/page/login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="285">
+              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -74,8 +74,11 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state>
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,6 +92,7 @@
       <find>headTop</find>
       <find>fetch</find>
       <find>post</find>
+      <find>\&lt;template\&gt;\n    \&lt;div\&gt;\n        \&lt;head\-top\&gt;\&lt;\/head\-top\&gt;\n\	\	\&lt;section class\=\&quot;data_section\&quot;\&gt;\n\	\	\	\&lt;header class\=\&quot;section_title\&quot;\&gt;日程发布\&lt;\/header\&gt;\n            \&lt;el\-form name\=\&quot;upload\&quot; id\=\&quot;upload\&quot;\&gt;\n                \&lt;el\-upload\n                    class\=\&quot;upload\-demo\&quot; name\=\&quot;officeName\&quot;\n                    ref\=\&quot;upload\&quot;\n                    multiple\=\&quot;false\&quot;\n                    \:on\-preview\=\&quot;handlePreview\&quot;\n                    \:on\-remove\=\&quot;handleRemove\&quot;\n                    \:on\-change\=\&quot;submitUpload\&quot;\n                    \:before\-upload\=\&quot;beforeUpload\&quot;\n                    \:file\-list\=\&quot;fileList\&quot;\n                    \:auto\-upload\=\&quot;false\&quot;\n                    \:multiple\=\&quot;false\&quot;\&gt;\n                    \&lt;el\-button size\=\&quot;small\&quot; type\=\&quot;primary\&quot;\&gt;点击上传\&lt;\/el\-button\&gt;\n                \&lt;\/el\-upload\&gt;\n            \&lt;\/el\-form\&gt;\n            \&lt;el\-row class\=\&quot;release\&quot;\&gt;\n                \&lt;el\-button \:click\=\&quot;release\&quot; type\=\&quot;success\&quot;\&gt;发布\&lt;\/el\-button\&gt;\n            \&lt;\/el\-row\&gt;\n\	\	\&lt;\/section\&gt;\n\n    \&lt;\/div\&gt;\n\&lt;\/template\&gt;\n\n\&lt;script\&gt;\n\	import headTop from \'\.\.\/components\/headTop\'\n\	import dtime from \'time\-formater\'\n\	import \{userCount\, orderCount\, getUserCount\, getOrderCount\, adminDayCount\, adminCount\} from \'\@\/api\/getData\'\n    import \{baseUrl\} from \'\.\.\/config\/env\'\n\n\n    export default \{\n    \	data\(\)\{\n            return\{\n                baseUrl\,\n                apiPath\:\&quot;http\:\/\/111\.230\.176\.108\:3333\/api\&quot;\,\n            \}\n    \	\}\,\n    \	components\: \{\n    \	\	headTop\,\n    \	\}\,\n    \	mounted\(\)\{\n    \	\	this\.initData\(\)\;\n    \	\	for \(let i \= 6\; i \&gt; \-1\; i\-\-\) \{\n    \	\	\	const date \= dtime\(new Date\(\)\.getTime\(\) \- 86400000\*i\)\.format\(\'YYYY\-MM\-DD\'\)\n    \	\	\	this\.sevenDay\.push\(date\)\n    \	\	\}\n    \	\	this\.getSevenData\(\)\;\n    \	\}\,\n        computed\: \{\n\n        \}\,\n    \	methods\: \{\n            submitUpload\(\) \{\n                this\.\$refs\.upload\.submit\(\)\;\n            \}\,\n            handleRemove\(file\, fileList\) \{\n                console\.log\(file\, fileList\)\;\n            \}\,\n            handlePreview\(file\) \{\n                console\.log\(file\)\;\n            \}\,\n            handleChange\(file\, fileList\)\{\n                console\.log\(file\)\;\n                console\.log\(fileList\)\;\n            \}\,\n            beforeUpload\: function \(file\) \{\n                console\.log\(baseUrl\)\n                \/\/这里是重点\，将文件转化为formdata数据上传\n                let data \= new FormData\(\)\;\n                \/\/ var word \= file\;\n                data\.append\(\'office\'\,file\)\;\n                var that \= this\;\n                \/\/data\.append\(\'type\'\,\'source_material\'\)\n                \/\/data\.append\(\'org_id_init\'\,\&quot;5B6CE3C39135D03D84CAFE223D352D77\&quot;\)\;\n\n                \/\/var apiPath \= \&quot;http\:\/\/192\.168\.11\.162\:8090\/api\/v1\/due_diligence\/upload_file\/\&quot;\n                this\.axios\.post\(this\.apiPath\+\&quot;\/publish\/uploadOffice\&quot;\,data\, \{\n                    headers\: \{\n                        \'Content\-Type\'\: \'multipart\/form\-data\'\n                    \}\n                \}\)\.then\(function\(res\) \{\n                        if\(res\.data\.code\=\=1\)\{\n                            that\.\$message\(\{\n                                message\: res\.data\.msg\,\n                                type\: \'success\'\n                            \}\)\;\n                        \}\n\n                \}\)\.then\(function \(data\) \{\n                    console\.log\(data\)\n                \}\)\n            \}\,\n            release\:function\(\)\{\n                \n    \}\n    \	\}\n    \}\n\&lt;\/script\&gt;\n\n\&lt;style lang\=\&quot;less\&quot;\&gt;\n\	\@import \'\.\.\/style\/mixin\'\;\n\n\	\.data_section\{\n\	\	padding\: 20px\;\n\	\	margin\-bottom\: 40px\;\n\	\	\.section_title\{\n\	\	\	text\-align\: center\;\n\	\	\	font\-size\: 30px\;\n\	\	\	margin\-bottom\: 10px\;\n\	\	\}\n\	\	\.data_list\{\n\	\	\	text\-align\: center\;\n\	\	\	font\-size\: 14px\;\n\	\	\	color\: \#666\;\n            border\-radius\: 6px\;\n            background\: \#E5E9F2\;\n            \.data_num\{\n                color\: \#333\;\n                font\-size\: 26px\;\n\n            \}\n            \.head\{\n                border\-radius\: 6px\;\n                font\-size\: 22px\;\n                padding\: 4px 0\;\n                color\: \#fff\;\n                display\: inline\-block\;\n            \}\n        \}\n        \.today_head\{\n            background\: \#FF9800\;\n        \}\n        \.all_head\{\n            background\: \#20A0FF\;\n        \}\n        \.release\{\n            margin\-top\: 500px\;\n            text\-align\: center\;\n        \}\n\	\}\n    \.wan\{\n        \.sc\(16px\, \#333\)\n    \}\n\&lt;\/style\&gt;\n</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -128,10 +132,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="35" />
-    <option name="y" value="34" />
-    <option name="width" value="1307" />
-    <option name="height" value="707" />
+    <option name="x" value="-19" />
+    <option name="y" value="24" />
+    <option name="width" value="1440" />
+    <option name="height" value="809" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -149,11 +153,6 @@
             <path>
               <item name="houtai" type="b2602c69:ProjectViewProjectNode" />
               <item name="houtai" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="houtai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="houtai" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -166,12 +165,7 @@
               <item name="houtai" type="b2602c69:ProjectViewProjectNode" />
               <item name="houtai" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="houtai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="houtai" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -250,28 +244,31 @@
       <workItem from="1527668409668" duration="151000" />
       <workItem from="1527669368054" duration="161000" />
       <workItem from="1527683243754" duration="400000" />
-      <workItem from="1527684909804" duration="1313000" />
+      <workItem from="1527684909804" duration="1759000" />
+      <workItem from="1527729667199" duration="1052000" />
+      <workItem from="1527750818802" duration="6964000" />
+      <workItem from="1527769581807" duration="77000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42346000" />
+    <option name="totallyTimeSpent" value="50885000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="35" y="34" width="1307" height="707" extended-state="0" />
+    <frame x="-19" y="24" width="1440" height="809" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22570772" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2048611" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.08846761" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1755102" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -293,6 +290,44 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/config/mUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="221" column="14" lean-forward="true" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+          <folding>
+            <element signature="e#1125#1168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/headTop.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -496,32 +531,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/manage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/page/login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-          <folding>
-            <element signature="e#919#968#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/headTop.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -530,28 +545,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/prod.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/test.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/mUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
+        <state relative-caret-position="1005">
           <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
         </state>
       </provider>
@@ -563,33 +559,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/fetch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/manage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/getData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3215">
+        <state relative-caret-position="593">
           <caret line="221" column="14" lean-forward="true" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/page/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="31" lean-forward="true" selection-end-line="1" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/page/home.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+        <state relative-caret-position="189">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding>
-            <element signature="e#938#981#0" expanded="true" />
+            <element signature="e#1125#1168#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,24 +2,28 @@
     <div>
         <head-top></head-top>
 		<section class="data_section">
-			<header class="section_title">日程发布</header>
+            <header class="section_title">日程发布</header>
+			<div class="calendar_div">
+                <span>日程名称:</span>
+                <el-input class="calendar"  v-model="calendarName" placeholder="请输入日程"></el-input>
+            </div>
             <el-form name="upload" id="upload">
                 <el-upload
-                    class="upload-demo" name="officeName"
+                    class="upload-demo"
+                    name="officeName"
                     ref="upload"
                     multiple="false"
                     :on-preview="handlePreview"
                     :on-remove="handleRemove"
                     :on-change="submitUpload"
                     :before-upload="beforeUpload"
-                    :file-list="fileList"
                     :auto-upload="false"
                     :multiple="false">
                     <el-button size="small" type="primary">点击上传</el-button>
                 </el-upload>
             </el-form>
             <el-row class="release">
-                <el-button type="success">发布</el-button>
+                <el-button type="success" @click="publish">发布</el-button>
             </el-row>
 		</section>
 
@@ -31,23 +35,21 @@
 	import dtime from 'time-formater'
 	import {userCount, orderCount, getUserCount, getOrderCount, adminDayCount, adminCount} from '@/api/getData'
     import {baseUrl} from '../config/env'
+    import { Message } from 'element-ui';
 
     export default {
     	data(){
             return{
                 baseUrl,
+                calendarName:'',
+                officeName:''
             }
     	},
     	components: {
     		headTop,
     	},
     	mounted(){
-    		this.initData();
-    		for (let i = 6; i > -1; i--) {
-    			const date = dtime(new Date().getTime() - 86400000*i).format('YYYY-MM-DD')
-    			this.sevenDay.push(date)
-    		}
-    		this.getSevenData();
+
     	},
         computed: {
 
@@ -67,29 +69,46 @@
                 console.log(fileList);
             },
             beforeUpload: function (file) {
-                console.log(baseUrl)
                 //这里是重点，将文件转化为formdata数据上传
                 let data = new FormData();
-                // var word = file;
                 data.append('office',file);
-                //data.append('type','source_material')
-                //data.append('org_id_init',"5B6CE3C39135D03D84CAFE223D352D77");
-                var apiPath = "http://111.230.176.108:3333/api/publish"
-                //var apiPath = "http://192.168.11.162:8090/api/v1/due_diligence/upload_file/"
+                var apiPath = baseUrl+"/publish/uploadOffice";
+                let that = this;
                 this.axios.post(apiPath,data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(function(res) {
-                        console.log(res)
-                        let data = eval+"("+res.data+")";
-                        console.log(typeof(data))
+                        let data = res.data;
                         if(data.code==1){
-                            console.log(data.data.filename)
+                            that.$message(data.msg);
+                            that.officeName = data.data.officeName;
                         }
-                }).then(function (data) {
-                    console.log(data)
-                })
+                        else{
+                            that.$message(data.msg);
+                        }
+                });
+            },
+            publish : function(){
+                if(this.calendarName.trim()==''){
+                    this.$message('请先上传文件');
+                    return;
+                }
+                var apiPath = baseUrl+"/publish";
+                let that = this;
+                let data = new URLSearchParams();
+                data.append('calendarName',this.calendarName);
+                data.append('officeName',this.officeName);
+                this.axios.post(apiPath,data).then(function(res) {
+                    let data = res.data;
+                    console.log(data);
+                    if(data.code==1){
+                        that.$message(data.msg);
+                    }
+                    else{
+                        that.$message(data.msg);
+                    }
+                });
             }
     	}
     }
@@ -99,8 +118,7 @@
 	@import '../style/mixin';
 
 	.data_section{
-		padding: 20px;
-		margin-bottom: 40px;
+		padding: 20px 20px 0 20px;
 		.section_title{
 			text-align: center;
 			font-size: 30px;
@@ -132,11 +150,23 @@
             background: #20A0FF;
         }
         .release{
-            margin-top: 500px;
+            margin-top: 380px;
             text-align: center;
         }
 	}
     .wan{
         .sc(16px, #333)
+    }
+    .calendar_div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0 10px 0;
+    }
+    .calendar_div>span{
+        width: 100px;
+    }
+    .calendar{
+        width: e("calc(50% - 100px)");
     }
 </style>

@@ -6,17 +6,16 @@
  * baseImgPath: 图片存放地址
  *
  */
-let baseUrl = 'http://111.230.176.108:3333/api';
-//const baseUrl = 'http://192.168.11.162:8090/api/v1/due_diligence/upload_file/';
+let baseUrl = '';
 let routerMode = 'hash';
 let baseImgPath;
 
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = '';
+	baseUrl = 'http://111.230.176.108:3333/api';
     baseImgPath = '/img/';
 }else{
-	baseUrl = '//elm.cangdu.org';
-    baseImgPath = '//elm.cangdu.org/img/';
+	baseUrl = 'http://111.230.176.108:3333/api';
+    baseImgPath = '/img/';
 }
 
 export {
