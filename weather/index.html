@@ -95,7 +95,7 @@
 			
 			.content .chart {
 				float: left;
-				width: 40%;
+				width: 49.8%;
 				height: 500px;
 				margin-top: 280px;
 			}
@@ -109,9 +109,9 @@
 				position: relative;
 				width: 50px;
 				height: 101px;
-				top: -351px;
-				left: 283px;
-				transform: rotate(-6deg)
+				top: -338px;
+				left: 357px;
+				transform: rotate(0deg)
 			}
 			
 			.pmsw {
@@ -119,9 +119,9 @@
 				position: relative;
 				width: 50px;
 				height: 101px;
-				top: -371px;
-				left: 308px;
-				transform: rotate(4deg);
+				top: -365px;
+    				left: 387px;
+				transform: rotate(1deg);
 			}
 			
 			.aqisn {
@@ -129,9 +129,9 @@
 				position: relative;
 				width: 50px;
 				height: 101px;
-				top: -354px;
-				left: 808px;
-				transform: rotate(-6deg);
+				top: -343px;
+				left: 782px;
+				transform: rotate(-4deg);
 			}
 			
 			.aqisw {
@@ -139,9 +139,9 @@
 				position: relative;
 				width: 50px;
 				height: 101px;
-				top: -371px;
-				left: 835px;
-				transform: rotate(2deg);
+				top: -356px;
+				left: 814px;
+				transform: rotate(5deg);
 			}
 			
 			.whther-logo {
@@ -149,7 +149,7 @@
 				height: 120px;
 				position: relative;
 				top: 20px;
-				left: -135px;
+/*				left: -135px;*/
 			}
 			
 			#Temperature {
@@ -217,7 +217,7 @@
 			</div>
 			<div class="chart" id="container1">
 			</div>
-			<div class="show-txt">
+			<!--<div class="show-txt">
 				<div style="margin-top: 20px;">
 					<p>室外</p>
 					<p>(OUTDOOR)</p>
@@ -226,11 +226,11 @@
 					<p>室内</p>
 					<p>(INDOOR)</p>
 				</div>
-			</div>
+			</div>-->
 			<div class="chart" id="container2">
 			</div>
-			<div class="pmtxt">PM2.5</div>
-			<div class="aqitxt">AQI</div>
+			<!--<div class="pmtxt">PM2.5</div>
+			<div class="aqitxt">AQI</div>-->
 			<img class="pmsn" src="img/indoor.png" alt="" />
 			<img class="pmsw" src="img/outerdoor.png" alt="" />
 			<img class="aqisn" src="img/indoor.png" alt="" />
@@ -340,13 +340,15 @@
 			Highcharts.chart("container1", {
 				chart: {
 					type: 'solidgauge',
-					marginTop: 10,
+					type: 'solidgauge',
+					spacing:[10,0,0,0],
+					marginTop: 30
 				},
 				title: {
 					text: parseInt(resp.data2), //+"<span style='color:white;font-size:12px;'>(室内)</span>",
-					y: 40,
+					y: 35,
 					style: {
-						fontSize: '4rem',
+						fontSize: '3.5rem',
 						color: initColor(resp.data2),
 					}
 				},
@@ -513,13 +515,14 @@
 			Highcharts.chart("container2", {
 				chart: {
 					type: 'solidgauge',
-					marginTop: 10
+					spacing:[10,0,0,0],
+					marginTop: 30
 				},
 				title: {
 					text: parseInt(resp.data4),
-					y: 40,
+					y: 35,
 					style: {
-						fontSize: '4rem',
+						fontSize: '3.5rem',
 						color: initColor(resp.data4),
 					}
 				},
@@ -684,7 +687,6 @@
 				}]
 			});
 		}
-
 		function initColor(val) {
 			var colorVal = parseInt(val);
 			var color;
@@ -703,6 +705,10 @@
 			}
 			return color
 		}
+		
+		function showWeather(res){
+			console.log(res)
+		}
 	</script>
-
+<script type="text/javascript" src="https://api.seniverse.com/v3/weather/now.json?location=shanghai&ts=1443079775&ttl=30&uid=[UB20B45CAD]&sig=[5hcw3whzubeifyp3]&callback=showWeather"></script>
 </html>
