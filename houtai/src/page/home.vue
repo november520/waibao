@@ -90,25 +90,33 @@
                 });
             },
             publish : function(){
-                if(this.calendarName.trim()==''){
-                    this.$message('请先上传文件');
-                    return;
-                }
-                var apiPath = baseUrl+"/publish";
-                let that = this;
-                let data = new URLSearchParams();
-                data.append('calendarName',this.calendarName);
-                data.append('officeName',this.officeName);
-                this.axios.post(apiPath,data).then(function(res) {
-                    let data = res.data;
-                    console.log(data);
-                    if(data.code==1){
-                        that.$message(data.msg);
-                    }
-                    else{
-                        that.$message(data.msg);
-                    }
-                });
+                var url = "http://localhost:3000/add"
+                this.axios.post(url,{
+                        _id:"JR00000010",
+                        value:"1.9"
+
+                }).then(function(res) {
+                        console.log(res)
+                    });
+                // if(this.calendarName.trim()==''){
+                //     this.$message('请先上传文件');
+                //     return;
+                // }
+                // var apiPath = baseUrl+"/publish";
+                // let that = this;
+                // let data = new URLSearchParams();
+                // data.append('calendarName',this.calendarName);
+                // data.append('officeName',this.officeName);
+                // this.axios.post(apiPath,data).then(function(res) {
+                //     let data = res.data;
+                //     console.log(data);
+                //     if(data.code==1){
+                //         that.$message(data.msg);
+                //     }
+                //     else{
+                //         that.$message(data.msg);
+                //     }
+                // });
             }
     	}
     }
