@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PM2.5</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+<div class="main">
+    <!--<div class="header">-->
+        <!--<img class="back-icon" src="./img/fanhui.png" alt="">-->
+        <!--<span>QLEAR</span>-->
+    <!--</div>-->
+    <div class="content">
+        <div class="select-floor">
+            <div>
+                <img class="logo" src="./img/logo.png" alt="">
+            </div>
+            <div id="slider-div" class="slider-div">
+                <div class="floor active" data-id="MSM-42800089">SN办公室</div>
+                <div class="floor" data-id="average">场所平均值</div>
+            </div>
+        </div>
+        <div class="localtion">
+            <div class="flex">
+                <div class="flex-1">
+                    <img class="location-icon unit" src="./img/dizhi.png" alt="">
+                    <span class="unit">上海</span>
+                </div>
+                <div class="flex-1 t-right f-14">
+                    <div>最后更新<span id="updateTime">0</span>minutes ago</div>
+
+                </div>
+            </div>
+            <div class="mtop-40">
+                PM2.5
+            </div>
+            <div id="value1" class="t-center f-100 white">
+                1
+            </div>
+            <div class="unit t-right">μg/m³</div>
+            <!--<div class="mtop-5 t-right">-->
+                <!--<span class="green">优</span>-->
+                <!--<span style="display: inline-block;width: 140px" class="mleft-5">室内</span>-->
+            <!--</div>-->
+            <!--<div class="mtop-5 t-right">-->
+                <!--<span class="green">优</span>-->
+                <!--<div style="display: inline-block;width: 145px">-->
+                    <!--<span class="mleft-5">室外</span>-->
+                    <!--<span id="value2" class="white f-24">23</span>-->
+                    <!--<span>μg/m³</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="mtop-5 t-right gray-bottom" style="padding-right: 20px">-->
+                <!--<span>室外/</span>-->
+                <!--<span>室内</span>-->
+                <!--<span id="value3" class="white f-24">23.0</span>-->
+                <!--<span>x</span>-->
+            <!--</div>-->
+            <div class="flex mtop-10 gray-top">
+                <div class="flex-1">PM10</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span class="green">优</span>
+                    <span id="value2" class="bottom-unit">1</span>
+                    <span class="unit unit-position">μg/m³</span>
+                </div>
+            </div>
+            <div class="flex mtop-10">
+                <div class="flex-1">PM100</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span class="green">优</span>
+                    <span id="value3" class="bottom-unit">1</span>
+                    <span class="unit unit-position">μg/m³</span>
+                </div>
+            </div>
+            <div class="flex mtop-10">
+                <div class="flex-1">二氧化碳</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span class="green">优</span>
+                    <span id="value4" class="bottom-unit">800</span>
+                    <span class="unit unit-position">ppm</span>
+                </div>
+            </div>
+            <div class="flex mtop-10">
+                <div class="flex-1">总挥发性有机化合物</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span class="green">优</span>
+                    <span id="value5" class="bottom-unit">0.06</span>
+                    <span class="unit unit-position">mg/m³</span>
+                </div>
+            </div>
+            <div class="flex mtop-10">
+                <div class="flex-1">温度</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span id="value6" class="bottom-unit">23</span>
+                    <span class="unit unit-position">℃</span>
+                </div>
+            </div>
+            <div class="flex mtop-10">
+                <div class="flex-1">湿度</div>
+                <div class="flex-1 t-right gray-bottom">
+                    <span id="value7" class="bottom-unit">23</span>
+                    <span class="unit unit-position">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./js/jquery.js"></script>
+<script>
+    let identifier = null;
+    let time = null;
+    loadFloor ()
+    $("#slider-div").on('click','.floor',function(){
+        $(this).parent().children().removeClass('active');
+        $(this).addClass('active');
+        let id = $(this).data("id")
+        if(id=='average'){
+            avarageData()
+        }else{
+            identifier = id;
+            loadData()
+        }
+    })
+    function loadFloor (){
+        $.ajax({
+            url: "https://api-testing.qlear.io/v1/monitors?token=JKFP6837ZUTR2X1K5GBNZQTT",
+            type: 'get',
+            contentType: "application/json;charset=utf-8",
+            success: function(resp) {
+                let str = ""
+                for(let i = 0;i<resp.length;i++){
+                    let value = resp[i].label
+                    if(value.indexOf('15')!=-1){
+                        if(i==0){
+                            str+=`<div class='floor active' data-id='${resp[i].identifier}'>${resp[i].label.substring(3,6)}</div>`
+                            identifier = resp[i].identifier;
+                        }else{
+                            str+=`<div class='floor' data-id='${resp[i].identifier}'>${resp[i].label.substring(3,6)}</div>`
+                        }
+                    }
+                }
+                loadData();
+            },
+            error: function() {
+               alert("程序出了点问题，请刷新试试。")
+            }
+        })
+    }
+    function loadData(){
+        $.ajax({
+            url: "https://api-testing.qlear.io/v1/monitors/latest",
+            type: 'get',
+            async:false,
+            data:{token:"JKFP6837ZUTR2X1K5GBNZQTT",identifier:identifier},
+            contentType: "application/json;charset=utf-8",
+            success: function(resp) {
+                    $('#updateTime').html(0)
+                    time = resp.calibrate_time;
+                    $("#value1").html(resp.pm2p5)
+                    $("#value2").html(resp.pm10)
+                    $("#value3").html(resp.pm100)
+                    $("#value4").html(resp.co2)
+                    $("#value5").html(resp.tvoc)
+                    $("#value6").html(resp.temperature)
+                    $("#value7").html(resp.humidity)
+            },
+            error: function() {
+            }
+        })
+    }
+    function avarageData(){
+        $.ajax({
+            url: "https://api-testing.qlear.io/v1/monitors/latest",
+            type: 'get',
+            async:false,
+            data:{token:"JKFP6837ZUTR2X1K5GBNZQTT",identifier:"MSM-42800089"},
+            contentType: "application/json;charset=utf-8",
+            success: function(resp) {
+                $.ajax({
+                    url: "https://api-testing.qlear.io/v1/monitors/latest",
+                    type: 'get',
+                    async:false,
+                    data:{token:"JKFP6837ZUTR2X1K5GBNZQTT",identifier:"MSM-42800128"},
+                    contentType: "application/json;charset=utf-8",
+                    success: function(resp2) {
+                        time = resp2.calibrate_time;
+                        let pm25 = avarageValue(resp.pm2p5,resp2.pm2p5)
+                        let pm10 = avarageValue(resp.pm10,resp2.pm10)
+                        let pm100 = avarageValue(resp.pm100,resp2.pm100)
+                        let co2 = avarageValue(resp.co2,resp2.co2)
+                        let tvoc = avarageValue(resp.tvoc,resp2.tvoc)
+                        let temperature = avarageValue(resp.temperature,resp2.temperature)
+                        let humidity = avarageValue(resp.humidity,resp2.humidity)
+                        $('#value1').html(pm25);
+                        $('#value2').html(pm10);
+                        $('#value3').html(pm100);
+                        $("#value4").html(co2)
+                        $("#value5").html(tvoc)
+                        $("#value6").html(temperature)
+                        $("#value7").html(humidity)
+                    },
+                    error: function() {
+                    }
+                })
+            },
+            error: function() {
+            }
+        })
+    }
+    function avarageValue(value1,value2){
+        return ((parseFloat(value1)+parseFloat(value2))/2).toFixed(2);
+    }
+    setInterval(function(){
+        time = new Date(time)
+        let nowTime = new Date();
+        let updateTime = parseInt(Math.floor(nowTime - time)/60000)
+        $('#updateTime').html(updateTime);
+    },500)
+    setInterval(function(){
+        loadData()
+    },300000)
+</script>
+</html>
